@@ -9,6 +9,9 @@ def home(request):
         'name':'Luan'
     })
 
+def inicio(requests):
+    return render(requests,'recipes/partials/header.html')
+
 
 
 

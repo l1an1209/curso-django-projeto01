@@ -1,18 +1,195 @@
-{% include "Recipes/partials/header.html" %}
+{% load static %}
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site de Café</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css"
+        integrity="sha512-UuQ/zJlbMVAw/UU8vVBhnI4op+/tFOpQZVT+FormmIEhRSCnJWyHiBbEVgM4Uztsht41f3FzVWgLuwzUqOObKw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css"
+        integrity="sha512-DJLNx+VLY4aEiEQFjiawXaiceujj5GA7lIY8CHCIGQCBPfsEG0nGz1edb4Jvw1LR7q031zS5PpPqFuPA8ihlRA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css"
+        integrity="sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Importando fontes do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #FFF8E1; /* Creme suave */
+            color: #4E342E; /* Marrom escuro */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background-color: #A1887F; /* Marrom claro */
+            color: #FFF8E1; /* Creme para texto */
+        }
+
+        .header {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #2E7D32; /* Verde escuro */
+        }
+
+        .button {
+            background-color: #2E7D32; /* Verde escuro */
+            color: #FFF8E1;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #1B5E20; /* Verde mais escuro */
+        }
+
+        .navbar {
+            background-color: #4E342E; /* Marrom escuro */
+            padding: 15px;
+            display: flex;
+            justify-content: center; /* Centraliza horizontalmente */
+            align-items: center;    /* Centraliza verticalmente */
+        }
+
+        .navbar a {
+            color: #FFF8E1;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #A1887F;
+        }
+
+        .footer {
+            background-color: #4E342E;
+            color: #FFF8E1;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Estilos para o Formulário de Pesquisa */
+        .search-form {
+            background-color: rgba(255, 255, 255, 0.9); /* Fundo claro e suave */
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            width: 300px; /* Ajuste conforme necessário */
+            margin: 20px auto;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .search-form input[type="search"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #a0522d; /* Cor do café */
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+            background-color: #fff5e6; /* Cor clara de café */
+        }
+
+        .search-form input[type="search"]:focus {
+            border-color: #8b4513; /* Cor mais escura ao focar */
+        }
+
+        .search-form button {
+            background-color: #a0522d; /* Cor do café */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .search-form button:hover {
+            background-color: #8b4513; /* Cor mais escura ao passar o mouse */
+            transform: translateY(-2px);
+        }
+
+        .search-form button:active {
+            transform: translateY(0);
+        }
+
+        /* Ajustes Responsivos */
+        @media (max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 15px;
+            }
+
+            .header {
+                font-size: 2em;
+            }
+
+            .navbar a {
+                margin: 0 10px;
+                font-size: 0.9em;
+            }
+
+            .search-form {
+                width: 90%;
+                padding: 15px;
+            }
+
+            .search-form input[type="search"],
+            .search-form button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
 <body>
-    <header class="main-header-container">
-        <div class="container">
-            <h1>
-                <a href="/" class="logo">
-                    <span>Recipes</span>
-                    <i class="fa-solid fa-pizza-slice"></i>
-                </a>
-            </h1>
-        </div>
-    </header>
+    <nav class="navbar">
+        <a href="{ url 'inicio' }">Início</a>
+        <a href="{ url 'menu' }">Menu</a>
+        <a href="{ url 'sobre' }">Sobre</a>
+        <a href="{ url 'contato' }">Contato</a>
+    </nav>
 
+    <div style="text-align: center; padding: 50px 20px;">
+        <i class="fa-solid fa-coffee fa-5x"></i>
+        <h4 style="margin-top: 0.25em;">Encontre o melhor café para você</h4>
+        
+        <form class="search-form" name="search" action="/seu-endereco-de-envio" method="GET">
+            <input type="search" name="search" placeholder="Pesquisar cafés...">
+            <button type="submit">Buscar</button>
+        </form>
+    </div>
 
+    
+
+    <footer class="footer">
+        &copy; 2024 Meu Site de Café. Todos os direitos reservados.
+    </footer>
+    
 </body>
-
 </html>
