@@ -1,0 +1,25 @@
+{% load static %}
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Receitas</title>
+    <!-- Link para o CSS estático -->
+    <link rel="stylesheet" href="{% static 'recipes/css/styles.css' %}">
+</head>
+<body>
+    <h1>Lista de Receitas</h1>
+    <ul>
+        {% for receita in receitas %}
+        <li>
+            <h2>{{ receita.titulo }}</h2>
+            <p>{{ receita.descricao }}</p>
+            <p>Autor: {{ receita.autor }}</p>
+            <p>Publicado em: {{ receita.data_publicacao }}</p>
+        </li>
+        {% empty %}
+        <p>Nenhuma receita encontrada.</p>
+        {% endfor %}
+    </ul>
+</body>
+</html>

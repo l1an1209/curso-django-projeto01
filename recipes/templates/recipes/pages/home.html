@@ -6,190 +6,229 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Site de Café</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css"
-        integrity="sha512-UuQ/zJlbMVAw/UU8vVBhnI4op+/tFOpQZVT+FormmIEhRSCnJWyHiBbEVgM4Uztsht41f3FzVWgLuwzUqOObKw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css"
-        integrity="sha512-DJLNx+VLY4aEiEQFjiawXaiceujj5GA7lIY8CHCIGQCBPfsEG0nGz1edb4Jvw1LR7q031zS5PpPqFuPA8ihlRA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css"
-        integrity="sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-WrDG8ZUR8AtZ9PsaG9e1QC3M4MgngQxxGR8OJ01fKHo4Q6afA+0kcsplCx9SRM5VZ3QdzrfQH0Y6gCgkWYtHqA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         /* Importando fontes do Google Fonts */
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;500&display=swap');
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #FFF8E1; /* Creme suave */
-            color: #4E342E; /* Marrom escuro */
+        :root {
+            --primary-color: #4E342E;
+            --secondary-color: #FFF8E1;
+            --accent-color: #2E7D32;
+            --hover-color: #1B5E20;
+            --font-family-primary: 'Playfair Display', serif;
+            --font-family-secondary: 'Roboto', sans-serif;
+            --spacing-large: 24px;
+            --spacing-small: 12px;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 20px;
-            border-radius: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            background-color: #A1887F; /* Marrom claro */
-            color: #FFF8E1; /* Creme para texto */
+        body {
+            font-family: var(--font-family-secondary);
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .header {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 3em;
-            margin-bottom: 20px;
-            color: #2E7D32; /* Verde escuro */
-        }
-
-        .button {
-            background-color: #2E7D32; /* Verde escuro */
-            color: #FFF8E1;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: background-color 0.3s ease;
-        }
-
-        .button:hover {
-            background-color: #1B5E20; /* Verde mais escuro */
-        }
-
+        /* Navbar */
         .navbar {
-            background-color: #4E342E; /* Marrom escuro */
-            padding: 15px;
             display: flex;
-            justify-content: center; /* Centraliza horizontalmente */
-            align-items: center;    /* Centraliza verticalmente */
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-small) var(--spacing-large);
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
         }
 
         .navbar a {
-            color: #FFF8E1;
-            margin: 0 15px;
+            color: var(--secondary-color);
             text-decoration: none;
+            margin: 0 var(--spacing-small);
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
         .navbar a:hover {
-            color: #A1887F;
+            color: var(--accent-color);
         }
 
-        .footer {
-            background-color: #4E342E;
-            color: #FFF8E1;
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             text-align: center;
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+            background: url('https://source.unsplash.com/1600x900/?coffee') no-repeat center center/cover;
+            color: var(--secondary-color);
         }
 
-        /* Estilos para o Formulário de Pesquisa */
-        .search-form {
-            background-color: rgba(255, 255, 255, 0.9); /* Fundo claro e suave */
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            width: 300px; /* Ajuste conforme necessário */
-            margin: 20px auto;
-            text-align: center;
-            backdrop-filter: blur(10px);
+        .hero h1 {
+            font-family: var(--font-family-primary);
+            font-size: 4rem;
+            margin-bottom: var(--spacing-small);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
         }
 
-        .search-form input[type="search"] {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #a0522d; /* Cor do café */
-            border-radius: 8px;
-            font-size: 16px;
-            outline: none;
-            transition: border-color 0.3s;
-            background-color: #fff5e6; /* Cor clara de café */
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: var(--spacing-large);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
 
-        .search-form input[type="search"]:focus {
-            border-color: #8b4513; /* Cor mais escura ao focar */
-        }
-
-        .search-form button {
-            background-color: #a0522d; /* Cor do café */
-            color: white;
+        .hero .button {
+            background-color: var(--accent-color);
+            color: var(--secondary-color);
+            padding: 12px 36px;
             border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            font-family: var(--font-family-primary);
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .hero .button:hover {
+            background-color: var(--hover-color);
+            transform: translateY(-4px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: var(--spacing-large);
+        }
+
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-large);
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card img {
             width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
 
-        .search-form button:hover {
-            background-color: #8b4513; /* Cor mais escura ao passar o mouse */
-            transform: translateY(-2px);
+        .card-content {
+            padding: var(--spacing-small);
         }
 
-        .search-form button:active {
-            transform: translateY(0);
+        .card-content h3 {
+            margin-bottom: var(--spacing-small);
+            font-size: 1.5rem;
+            font-family: var(--font-family-primary);
+            color: var(--primary-color);
         }
 
-        /* Ajustes Responsivos */
-        @media (max-width: 600px) {
-            .container {
-                margin: 20px;
-                padding: 15px;
+        .card-content p {
+            color: #666;
+            margin-bottom: var(--spacing-small);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: var(--spacing-large);
+            margin-top: var(--spacing-large);
+        }
+
+        .footer a {
+            color: var(--secondary-color);
+            margin: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
             }
 
-            .header {
-                font-size: 2em;
-            }
-
-            .navbar a {
-                margin: 0 10px;
-                font-size: 0.9em;
-            }
-
-            .search-form {
-                width: 90%;
-                padding: 15px;
-            }
-
-            .search-form input[type="search"],
-            .search-form button {
-                font-size: 14px;
-                padding: 10px;
+            .hero p {
+                font-size: 1.2rem;
             }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
-        <a href="{ url 'inicio' }">Início</a>
-        <a href="{ url 'menu' }">Menu</a>
-        <a href="{ url 'sobre' }">Sobre</a>
-        <a href="{ url 'contato' }">Contato</a>
+        <div class="logo">Meu Café</div>
+        <div>
+            <a href="#">Início</a>
+            <a href="#">Menu</a>
+            <a href="#">Sobre</a>
+            <a href="#">Contato</a>
+        </div>
     </nav>
 
-    <div style="text-align: center; padding: 50px 20px;">
-        <i class="fa-solid fa-coffee fa-5x"></i>
-        <h4 style="margin-top: 0.25em;">Encontre o melhor café para você</h4>
-        
-        <form class="search-form" name="search" action="/seu-endereco-de-envio" method="GET">
-            <input type="search" name="search" placeholder="Pesquisar cafés...">
-            <button type="submit">Buscar</button>
-        </form>
-    </div>
+    <section class="hero">
+        <h1>Descubra o Sabor do Verdadeiro Café</h1>
+        <p>Encontre o café perfeito para acompanhar os melhores momentos da sua vida.</p>
+        <a href="{% url 'lista_receitas' %}" class="button">Lista Receitas </a>
+    </section>
 
-    
+    <section class="main-content">
+        <div class="card-container">
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?coffee" alt="Café 1">
+                <div class="card-content">
+                    <h3>Café Clássico</h3>
+                    <p>Um blend perfeito para os amantes de café tradicional.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?espresso" alt="Café 2">
+                <div class="card-content">
+                    <h3>Espresso Intenso</h3>
+                    <p>Para quem aprecia um sabor forte e marcante.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://source.unsplash.com/300x200/?latte" alt="Café 3">
+                <div class="card-content">
+                    <h3>Latte Cremoso</h3>
+                    <p>Uma combinação suave de leite e café.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer class="footer">
-        &copy; 2024 Meu Site de Café. Todos os direitos reservados.
+        <p>&copy; 2024 Meu Site de Café. Todos os direitos reservados.</p>
+        <div>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
     </footer>
-    
 </body>
 </html>

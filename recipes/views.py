@@ -1,17 +1,11 @@
 from django.shortcuts import render
+from .models import Receita
 
-
-# Create your views here.
-
-
+# View para a página inicial
 def home(request):
-    return render(request, 'recipes/pages/home.html',context={
-        'name':'Luan'
-    })
+    return render(request, 'recipes/pages/home.html')
 
-def inicio(requests):
-    return render(requests,'recipes/partials/header.html')
-
-
-
-
+# View para listar receitas
+def lista_receitas(request):
+    receitas = Receita.objects.all().order_by('-data_publicacao')
+    return render(request, 'recipes/pages/lista_receitas.html', {'receitas': receitas})
